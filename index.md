@@ -6,7 +6,9 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Article List
 
-* [Design Patterns](#endl-is-evil)
+* [Endl is evil](#endl-is-evil-but-only-a-little-bit)
+* [Data Alignment](#data-alignment)
+* [Method Chaining](#method-chaining)
 * Memset and friends
 * Garbage collection
 * Better exception handling
@@ -18,27 +20,28 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 * Better multithreading, std::atomic
 
 ## Endl is evil, but only a little bit
+Std::endl is equivalent to ‘\n’ followed by a std::flush. Flushing is emptying the stream buffer, and it is not always desired. Not using std::endl everywhere can slightly improve performance.
 
-- Bulleted
-- List
+## Data Alignment
+In a C++ struct, data is padded with zeros to fit things in words. A struct with a char, an int, and a short takes up more space than a struct with an int, a short and a char. Only becomes relevant for millions of structs. More info: https://jonasdevlieghere.com/order-your-members/
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-
-```markdown
-Syntax highlighted code block
+## Method Chaining
+Also known as Fluent APIs, method chaining can sometimes be used to create user friendly interfaces:
 ```
+   GlutApp app(argc, argv);
+   app.setDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_ALPHA|GLUT_DEPTH); // Set framebuffer params
+   app.setWindowSize(500, 500); // Set window params
+   app.setWindowPosition(200, 200);
+   app.setTitle("My OpenGL/GLUT App");
+   app.create();
+```
+Above is an example from Glut, an OpenGL library. Several lines were used to setup a window using five different functions.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ovunctuzel/RoadToMastery/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+   FluentGlutApp(argc, argv)
+       .withDoubleBuffer().withRGBA().withAlpha().withDepth()
+       .at(200, 200).across(500, 500)
+       .named("My OpenGL/GLUT App")
+       .create();
+```
+Above is a fluent way of writing similar code. Note that each one of these functions must return the object itself so that they can be chained like this. In C++, ```return this``` would return a pointer to the class this statement exists in, so ```return *this``` can be used to return the object itself.
