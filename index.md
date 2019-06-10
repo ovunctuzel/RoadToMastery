@@ -1,9 +1,7 @@
 ## C++ Study Journal
 
-You can use the [editor on GitHub](https://github.com/ovunctuzel/RoadToMastery/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
+This page contains a list of quick tips and tutorials for programming and game development. This page mostly focuses on C++, but resources on C#, Python, Unreal Engine, Unity, and Math can also be found.
+ 
 ### Article List
 
 * [Endl is evil](#endl-is-evil-but-only-a-little-bit)
