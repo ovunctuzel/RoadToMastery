@@ -29,8 +29,8 @@ In a C++ struct, data is padded with zeros to fit things in words. A struct with
 Also known as Fluent APIs, method chaining can sometimes be used to create user friendly interfaces:
 ```
    GlutApp app(argc, argv);
-   app.setDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_ALPHA|GLUT_DEPTH); // Set framebuffer params
-   app.setWindowSize(500, 500); // Set window params
+   app.setDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_ALPHA|GLUT_DEPTH);
+   app.setWindowSize(500, 500);
    app.setWindowPosition(200, 200);
    app.setTitle("My OpenGL/GLUT App");
    app.create();
