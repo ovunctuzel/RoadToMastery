@@ -6,7 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Article List
 
-* Design Patterns [here](#endl-is-evil-but-only-a-little-bit)
+* [Design Patterns](#endl-is-evil)
 * Memset and friends
 * Garbage collection
 * Better exception handling
