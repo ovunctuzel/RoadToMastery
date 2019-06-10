@@ -1,19 +1,28 @@
-## Welcome to GitHub Pages
+## C++ Study Journal
 
 You can use the [editor on GitHub](https://github.com/ovunctuzel/RoadToMastery/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Article List
+
+* Design Patterns [here](# Endl is evil)
+* Memset and friends
+* Garbage collection
+* Better exception handling
+* Less known C++ data structures
+* Implementation of C++ data structures
+* Regex
+* Rvalue Lvalue
+* Better Smart Pointers
+* Better multithreading, std::atomic
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
 ```markdown
 Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+# Endl is evil, but only a little bit
 
 - Bulleted
 - List
