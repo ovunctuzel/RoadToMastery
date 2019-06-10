@@ -6,7 +6,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### Article List
 
-* Design Patterns [here](# Endl is evil, but only a little bit)
+* Design Patterns [here](#endl-is-evil-but-only-a-little-bit)
 * Memset and friends
 * Garbage collection
 * Better exception handling
@@ -17,9 +17,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 * Better Smart Pointers
 * Better multithreading, std::atomic
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-# Endl is evil, but only a little bit
+## Endl is evil, but only a little bit
 
 - Bulleted
 - List
