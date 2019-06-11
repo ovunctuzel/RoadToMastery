@@ -2,11 +2,18 @@
 
 This page contains a list of quick tips and tutorials for programming and game development. This page mostly focuses on C++, but resources on C#, Python, Unreal Engine, Unity, and Math can also be found.
  
-### Article List
+## Article List
+
+### C++
 
 * [Endl is evil](#endl-is-evil-but-only-a-little-bit)
 * [Data Alignment](#data-alignment)
 * [Method Chaining](#method-chaining)
+
+### Unreal
+* [Replication Tips](#replication-tips)
+
+### Coming Soon
 * Memset and friends
 * Garbage collection
 * Better exception handling
@@ -45,3 +52,24 @@ Above is an example from Glut, an OpenGL library. Several lines were used to set
 Above is a fluent way of writing similar code. Note that each one of these functions must return the object itself so that they can be chained like this. In C++, ```return this``` would return a pointer to the class this statement exists in, so ```return *this``` can be used to return the object itself.
 
 We can construct a fluent wrapper around a class to achieve this functionality cleanly. In the above example FluentGlutApp is a wrapper around  GlutApp(actually inherits GlutApp), and its functions call the necessary functions on GlutApp and return itself.
+
+## Unreal
+### Replication Tips
+We can replicate variables using ReplicatedUsing or Replicated tags. bReplicates must be set to true in the constructor.
+```
+	UPROPERTY(Replicated)
+	bool RepVar = false;
+ 
+	UPROPERTY(ReplicatedUsing = OnRep_ReadyForIMUSolveInit)
+	bool RepVar2 = false;
+```
+Whenever the value of RepVar changes, the change propagates to clients. Whenever the value on RepVar2 changes, the change propagates to clients and OnRep_ReadyForIMUSolveInit function is called. 
+
+```
+void USomeComponent::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	DOREPLIFETIME(USomeComponent, SomeReplicatedVariable);
+}
+```
+The above function must be overriden for proper replication of variables.
