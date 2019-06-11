@@ -4,7 +4,7 @@ This page contains a list of quick tips and tutorials for programming and game d
  
 ## Article List
 
-### C++
+### Programming
 
 * [Endl is evil](#endl-is-evil-but-only-a-little-bit)
 * [Data Alignment](#data-alignment)
@@ -24,13 +24,15 @@ This page contains a list of quick tips and tutorials for programming and game d
 * Better Smart Pointers
 * Better multithreading, std::atomic
 
-## Endl is evil, but only a little bit
+## Programming Tips
+
+### Endl is evil, but only a little bit
 Std::endl is equivalent to ‘\n’ followed by a std::flush. Flushing is emptying the stream buffer, and it is not always desired. Not using std::endl everywhere can slightly improve performance.
 
-## Data Alignment
+### Data Alignment
 In a C++ struct, data is padded with zeros to fit things in words. A struct with a char, an int, and a short takes up more space than a struct with an int, a short and a char. A good practice is to order members from large to small. However, unless working with severe hardware constraints or trying to optimize networked software, this only becomes relevant for millions of structs. More info: https://jonasdevlieghere.com/order-your-members/
 
-## Method Chaining
+### Method Chaining
 Also known as Fluent APIs, method chaining can sometimes be used to create user friendly interfaces:
 ```
    GlutApp app(argc, argv);
