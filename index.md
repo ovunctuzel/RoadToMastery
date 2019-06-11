@@ -9,6 +9,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Endl is evil](#endl-is-evil-but-only-a-little-bit)
 * [Data Alignment](#data-alignment)
 * [Method Chaining](#method-chaining)
+* [Using](#using)
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -54,6 +55,18 @@ Above is an example from Glut, an OpenGL library. Several lines were used to set
 Above is a fluent way of writing similar code. Note that each one of these functions must return the object itself so that they can be chained like this. In C++, ```return this``` would return a pointer to the class this statement exists in, so ```return *this``` can be used to return the object itself.
 
 We can construct a fluent wrapper around a class to achieve this functionality cleanly. In the above example FluentGlutApp is a wrapper around  GlutApp(actually inherits GlutApp), and its functions call the necessary functions on GlutApp and return itself.
+
+### Using
+Using is commonly used for importing namespaces:
+```
+using Wow::This::Namespace::Is::Long
+```
+Using can also be used as an alias to shorten long types:
+```
+using Settings = std::map<std::string, std::vector<int>>;
+Settings settings;
+```
+
 
 ## Unreal
 ### Replication Tips
