@@ -68,10 +68,11 @@ We can replicate variables using ReplicatedUsing or Replicated tags. bReplicates
 Whenever the value of RepVar changes, the change propagates to clients. Whenever the value on RepVar2 changes, the change propagates to clients and OnRep_ReadyForIMUSolveInit function is called. 
 
 ```
-void USomeComponent::GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const
+void USomeComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-	DOREPLIFETIME(USomeComponent, SomeReplicatedVariable);
+	DOREPLIFETIME(USomeComponent, RepVar);
+	DOREPLIFETIME(USomeComponent, RepVar2);
 }
 ```
 The above function must be overriden for proper replication of variables.
