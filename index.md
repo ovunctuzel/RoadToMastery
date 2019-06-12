@@ -71,7 +71,7 @@ Settings settings;
 ### Serialization
 We can serialize data (usually an object) to save them and possibly access them at a later time. We can either serialize in human readable formats (e.g. JSON), or more efficient machine formats (e.g. binary). Below is a practical examples:
 
-***C# Binary Serialization:***
+#### C# Binary Serialization:
 ```
     public static class Serializer
     {
@@ -115,11 +115,11 @@ Note that we need to import System.Runtime.Serialization.Formatters.Binary, and 
 
 #### Links:
 
-[C# JSON Serialization:](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
+[C# JSON Serialization](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
 
-[C# Binary Serialization:](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
+[C# Binary Serialization](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
 
-[C++ Lightweight Serialization Library:]http://uscilab.github.io/cereal/
+[C++ Lightweight Serialization Library](http://uscilab.github.io/cereal/)
 
 [Python Pickle](https://docs.python.org/3/library/pickle.html)
 
