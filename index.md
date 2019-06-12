@@ -69,9 +69,9 @@ Settings settings;
 ```
 
 ### Serialization
-We can serialize data (usually an object) to save them and possibly access them at a later time. We can either serialize in human readable formats (e.g. JSON), or more efficient machine formats (e.g. binary). Below are some practical examples:
+We can serialize data (usually an object) to save them and possibly access them at a later time. We can either serialize in human readable formats (e.g. JSON), or more efficient machine formats (e.g. binary). Below is a practical examples:
 
-C# (Binary)
+***C# Binary Serialization:***
 ```
     public static class Serializer
     {
@@ -113,9 +113,15 @@ C# (Binary)
 ```
 Note that we need to import System.Runtime.Serialization.Formatters.Binary, and put [Serializable] tag on objects. 
 
-JSON: [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
-BIN: [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
-C++: [Cereal]http://uscilab.github.io/cereal/
+#### More examples:
+
+***C# JSON Serialization:*** [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
+
+***C# Binary Serialization:*** [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
+
+***C++ Lightweight Serialization Library:*** [Cereal]http://uscilab.github.io/cereal/
+
+***Python:*** [Pickle](https://docs.python.org/3/library/pickle.html)
 
 ## Unreal
 ### Replication Tips
