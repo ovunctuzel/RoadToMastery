@@ -10,6 +10,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Data Alignment](#data-alignment)
 * [Method Chaining](#method-chaining)
 * [Using](#using)
+* [Serialization](#serialization)
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -67,6 +68,54 @@ using Settings = std::map<std::string, std::vector<int>>;
 Settings settings;
 ```
 
+### Serialization
+We can serialize data (usually an object) to save them and possibly access them at a later time. We can either serialize in human readable formats (e.g. JSON), or more efficient machine formats (e.g. binary). Below are some practical examples:
+
+C# (Binary)
+```
+    public static class Serializer
+    {
+        public static void Save(string filePath, object objToSerialize)
+        {
+            try
+            {
+                using (Stream stream = File.Open(filePath, FileMode.Create))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    bin.Serialize(stream, objToSerialize);
+                }
+            }
+            catch (IOException)
+            {
+            }
+        }
+
+        public static T Load<T>(string filePath) where T : new()
+        {
+            T rez = new T();
+
+            try
+            {
+                using (Stream stream = File.Open(filePath, FileMode.Open))
+                {
+                    BinaryFormatter bin = new BinaryFormatter();
+                    rez = (T)bin.Deserialize(stream);
+                }
+            }
+            catch (IOException ex)
+            {
+                throw ex;
+            }
+
+            return rez;
+        }
+    }
+```
+Note that we need to import System.Runtime.Serialization.Formatters.Binary, and put [Serializable] tag on objects. 
+
+JSON: [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
+BIN: [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
+C++: [Cereal]http://uscilab.github.io/cereal/
 
 ## Unreal
 ### Replication Tips
