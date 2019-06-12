@@ -113,15 +113,15 @@ We can serialize data (usually an object) to save them and possibly access them 
 ```
 Note that we need to import System.Runtime.Serialization.Formatters.Binary, and put [Serializable] tag on objects. 
 
-#### More examples:
+#### Links:
 
-***C# JSON Serialization:*** [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
+[C# JSON Serialization:](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.json?view=netframework-4.8)
 
-***C# Binary Serialization:*** [Here](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
+[C# Binary Serialization:](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=netframework-4.8)
 
-***C++ Lightweight Serialization Library:*** [Cereal]http://uscilab.github.io/cereal/
+[C++ Lightweight Serialization Library:]http://uscilab.github.io/cereal/
 
-***Python:*** [Pickle](https://docs.python.org/3/library/pickle.html)
+[Python Pickle](https://docs.python.org/3/library/pickle.html)
 
 ## Unreal
 ### Replication Tips
