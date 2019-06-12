@@ -11,6 +11,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Method Chaining](#method-chaining)
 * [Using](#using)
 * [Serialization](#serialization)
+* [Trailing Return Types](#trailing-return-types)
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -122,6 +123,24 @@ Note that we need to import System.Runtime.Serialization.Formatters.Binary, and 
 [C++ Lightweight Serialization Library](http://uscilab.github.io/cereal/)
 
 [Python Pickle](https://docs.python.org/3/library/pickle.html)
+
+### Trailing Return Types
+
+```
+template<class T>
+decltype(a*b) mul(T a, T b)
+{
+	return a*b;
+}
+
+template<class T>
+auto mul(T a, T b) -> decltype(a*b)
+{
+	return a*b;
+}
+```
+
+In the first example, the compiler doesn't know what type ```a*b``` is. In the second example, the compiler can deduce it thanks to trailing return types. More info: [IBM](https://www.ibm.com/developerworks/community/blogs/5894415f-be62-4bc0-81c5-3956e82276f3/entry/introduction_to_the_c_11_feature_trailing_return_types?lang=en)
 
 ## Unreal
 ### Replication Tips
