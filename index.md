@@ -12,6 +12,8 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Using](#using)
 * [Serialization](#serialization)
 * [Trailing Return Types](#trailing-return-types)
+* [Regex](#regex)
+
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -22,7 +24,6 @@ This page contains a list of quick tips and tutorials for programming and game d
 * Better exception handling
 * Less known C++ data structures
 * Implementation of C++ data structures
-* Regex
 * Rvalue Lvalue
 * Better Smart Pointers
 * Better multithreading, std::atomic
@@ -141,6 +142,42 @@ auto mul(T a, T b) -> decltype(a*b)
 ```
 
 In the first example, the compiler doesn't know what type ```a*b``` is. In the second example, the compiler can deduce it thanks to trailing return types. More info: [IBM](https://www.ibm.com/developerworks/community/blogs/5894415f-be62-4bc0-81c5-3956e82276f3/entry/introduction_to_the_c_11_feature_trailing_return_types?lang=en)
+
+### Regex
+#### Regex in C++
+```regex_match()``` Returns true if the regular expression is a match against the given string otherwise it returns false.
+```regex_search()``` Searchs for a pattern matching the regular expression in a string. Looks for substrings that match the pattern.
+```regex_replace()``` Replaces the pattern matching to the regular expression with a string.
+
+Below is a simple C++ example:
+```
+#include <iostream>
+#include <regex>
+
+int main()
+{
+	std::string str = "This is a generic string!";
+	std::regex reg("This is a [a-g]+");
+	bool searchMatches = std::regex_search(str, reg); // Match
+	bool matchMatches = std::regex_match(str, reg); // No Match
+
+	// Search for a substring
+	std::smatch mat;
+	std::regex_search(str, mat, reg);
+	for(auto c : mat)
+		std::cout << c; // Prints 'This is a ge'
+
+	// Replace substring
+	std::string result;
+	std::regex_replace(std::back_inserter(result), str.begin(), str.end(), reg, "XYZ");
+	std::cout << "\nResult: " << result << std::endl; // Prints 'XYZneric string!'
+}
+```
+
+More to come on regex patterns...
+
+[Excellent Resource](https://regexr.com/)
+
 
 ## Unreal
 ### Replication Tips
