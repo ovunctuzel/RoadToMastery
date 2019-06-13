@@ -145,16 +145,14 @@ In the first example, the compiler doesn't know what type ```a*b``` is. In the s
 
 ### Regex
 #### Regex in C++
-```regex_match()``` Returns true if the regular expression is a match against the given string otherwise it returns false.
-```regex_search()``` Searchs for a pattern matching the regular expression in a string. Looks for substrings that match the pattern.
-```regex_replace()``` Replaces the pattern matching to the regular expression with a string.
+```regex_match()``` returns true if the regular expression is a match against the given string otherwise it returns false.
+
+```regex_search()``` searches for a pattern matching the regular expression in a string. Looks for substrings that match the pattern.
+
+```regex_replace()``` replaces the pattern matching to the regular expression with a string.
 
 Below is a simple C++ example:
 ```
-#include <iostream>
-#include <regex>
-
-#include "pch.h"
 #include <iostream>
 #include <regex>
 using namespace std;
