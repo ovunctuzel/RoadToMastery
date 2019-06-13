@@ -154,24 +154,30 @@ Below is a simple C++ example:
 #include <iostream>
 #include <regex>
 
+#include "pch.h"
+#include <iostream>
+#include <regex>
+using namespace std;
+
 int main()
 {
-	std::string str = "This is a generic string!";
-	std::regex reg("This is a [a-g]+");
-	bool searchMatches = std::regex_search(str, reg); // Match
-	bool matchMatches = std::regex_match(str, reg); // No Match
+	string str = "This is a generic string!";
+	regex reg("This is a [a-g]+");
+	bool searchMatches = regex_search(str, reg); // Match
+	bool matchMatches = regex_match(str, reg); // No Match
 
 	// Search for a substring
-	std::smatch mat;
-	std::regex_search(str, mat, reg);
+	smatch mat;
+	regex_search(str, mat, reg);
 	for(auto c : mat)
-		std::cout << c; // Prints 'This is a ge'
+		cout << c; // Prints 'This is a ge'
 
 	// Replace substring
-	std::string result;
-	std::regex_replace(std::back_inserter(result), str.begin(), str.end(), reg, "XYZ");
-	std::cout << "\nResult: " << result << std::endl; // Prints 'XYZneric string!'
+	string result;
+	regex_replace(back_inserter(result), str.begin(), str.end(), reg, "XYZ");
+	cout << "\n" << result // Prints 'XYZneric string!'
 }
+
 ```
 
 More to come on regex patterns...
