@@ -13,6 +13,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Serialization](#serialization)
 * [Trailing Return Types](#trailing-return-types)
 * [Regex](#regex)
+* [Raw Strings](#raw-strings)
 * [Foreach Mutability](#foreach-mutability)
 
 
@@ -182,6 +183,13 @@ int main()
 More to come on regex patterns...
 
 [Excellent Resource](https://regexr.com/)
+
+### Raw Strings
+Below strings ignore all escape characters. This is especially useful when constructing regex patterns.
+#### C#
+```string pattern = @"stage\.effect\.";```
+#### C++
+```std::string s = R"(This\is\a\raw\string\literal)"; ```
 
 ### Foreach Mutability
 #### C#
