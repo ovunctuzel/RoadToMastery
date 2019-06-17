@@ -13,6 +13,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Serialization](#serialization)
 * [Trailing Return Types](#trailing-return-types)
 * [Regex](#regex)
+* [Foreach Mutability](#foreach-mutability)
 
 
 ### Unreal
@@ -182,6 +183,60 @@ More to come on regex patterns...
 
 [Excellent Resource](https://regexr.com/)
 
+### Foreach Mutability
+#### C#
+In C#, we cannot directly assign to the value we iterate in a foreach loop, however, we can change the contents of the data structure. Let listlist be a list of integer lists:
+
+```
+    var listlist = new List<List<int>> { new List<int>{ 1, 2, 3, 4, 5 }, new List<int>{ 1, 2, 3, 4 } };
+
+    // Legal - Actually modifies the inner lists
+    foreach (var list in listlist)
+    {
+	list[1] = 99;
+    }
+
+    // Illegal - Compile Error
+    foreach (var list in listlist)
+    {
+	list = new List<int> { 5, 5 };
+    }
+
+    // Illegal - Compile Error, cannot directly assign to list
+    foreach (var list in listlist)
+    {
+	list = list.Reverse;
+    }
+
+    // Legal - Reverse using an inner for loop
+    foreach (var list in listlist)
+    {
+	for (int i = 0; i < list.Count/2; i++)
+	{
+	    var temp = list[i];
+	    list[i] = list[list.Count - i - 1];
+	    list[list.Count - i - 1] = temp;
+	}
+    }
+```
+
+#### C++
+In C++, range based for loops are mutable unless passed using const.
+```
+	std::vector<int> vec = { 1, 2, 3, 4, 5 };
+
+	// Passes by value, vec is not modified
+	for (int i : vec)
+	{
+		i++;
+	}	
+
+	// Passes by ref, vec is modified
+	for (int & i : vec)
+	{
+		i++;
+	}
+```
 
 ## Unreal
 ### Replication Tips
