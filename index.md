@@ -15,7 +15,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Regex](#regex)
 * [Raw Strings](#raw-strings)
 * [Foreach Mutability](#foreach-mutability)
-
+* [Interesting Data Structures](#interesting-data-structures)
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -24,7 +24,6 @@ This page contains a list of quick tips and tutorials for programming and game d
 * Memset and friends
 * Garbage collection
 * Better exception handling
-* Less known C++ data structures
 * Implementation of C++ data structures
 * Rvalue Lvalue
 * Better Smart Pointers
@@ -71,6 +70,14 @@ Using can also be used as an alias to shorten long types:
 using Settings = std::map<std::string, std::vector<int>>;
 Settings settings;
 ```
+
+### Interesting Data Structures
+#### C#
+
+[Hybrid Dictionary](https://docs.microsoft.com/en-us/dotnet/api/system.collections.specialized.hybriddictionary?redirectedfrom=MSDN&view=netframework-4.8): Uses a linked list when the container size is small, automatically switches to a hash table implementation when the container gets sufficiently large.
+
+#### C++
+Coming soon...
 
 ### Serialization
 We can serialize data (usually an object) to save them and possibly access them at a later time. We can either serialize in human readable formats (e.g. JSON), or more efficient machine formats (e.g. binary). Below is a practical examples:
