@@ -19,6 +19,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 
 ### Unreal
 * [Replication Tips](#replication-tips)
+* [Delegates](#delegates)
 
 ### Coming Soon
 * Memset and friends
@@ -274,3 +275,24 @@ void USomeComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
 }
 ```
 The above function must be overriden for proper replication of variables.
+
+### Delegates
+**From Unreal Wiki (Rama):** A delegate is basically an event that you can define and call and respond to. Every time the event is fired off, anyone who is listening for this event will receive it and be able to take appropriate action. In the case of multicast delegates, any number of entities within your code base can respond to the same event and receive the inputs and use them. In the case of dynamic delegates, the delegate can be saved/loaded within a Blueprint graph (they're called Events/Event Dispatcher in BP).
+
+#### Example
+Declare the delegate in header file.
+``` DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnChoiceReceived, int, id); ```
+
+We can expose the delegate to blueprints like this:
+``` 
+UPROPERTY(BlueprintAssignable)
+FOnChoiceReceived OnChoiceReceived;
+```
+The blueprint can then bind to this delegate using any function with the same signature.
+Whenever we call something like ``` OnChoiceReceived.Broadcast(152) ``` all subscribers to OnChoiceReceived will be notified.
+
+In C++ we can bind to a delegate like this:
+```
+OnChoiceReceived.AddDynamic(this, &USomeClass::RespondToChoice);
+```
+Use ``` AddUObject ``` for non-dynamic delegates, and use ``` BindUObject ``` for non-multicast delegates.
