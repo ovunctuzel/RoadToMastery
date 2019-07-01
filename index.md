@@ -16,6 +16,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Raw Strings](#raw-strings)
 * [Foreach Mutability](#foreach-mutability)
 * [Interesting Data Structures](#interesting-data-structures)
+* [Memory & Smart Pointers](#memory-and-smart-pointers)
 
 ### Unreal
 * [Replication Tips](#replication-tips)
@@ -27,7 +28,6 @@ This page contains a list of quick tips and tutorials for programming and game d
 * Better exception handling
 * Implementation of C++ data structures
 * Rvalue Lvalue
-* Better Smart Pointers
 * Better multithreading, std::atomic
 
 ## Programming Tips
@@ -235,6 +235,24 @@ In C#, we cannot directly assign to the value we iterate in a foreach loop, howe
 	}
     }
 ```
+
+### Memory and Smart Pointers
+Most of this section comes from [Fluent C++](https://www.fluentcpp.com/2017/08/22/smart-developers-use-smart-pointers-smart-pointers-basics/).
+#### Stack vs Heap
+Everytime we declare a variable in C++, or pass a variable by value to a function, make a function call, etc. things get pushed into the stack. This means they are stored in consecutive(?) memory. **Objects allocated on the stack are automatically destroyed when they go out of scope.**
+
+Dynamically allocated objects are stored on the heap.
+```
+int * pi = new int(42);
+```
+The new keyword returns a pointer, in this case it is an int pointer. Objects allocated on the heap **are not destroyed automatically**.
+
+```
+House* buildAHouse();
+```
+This function returns a House pointer. As the user of this function perhaps I should delete the pointer after I get my house. But what if I delete it and someone else also tries to delete it (undefined behavior)? If I don't delete it, and no one else does, perhaps there will be a memory leak.
+
+RAII comes to the rescue. One simple rule: Wrap a resource (a pointer) into an object, and dispose of the resource in its destructor. This way the wrapper object is allocated in stack, and is automatically destroyed (delete ptr is called with the destructor) when it goes out of scope.
 
 #### C++
 In C++, range based for loops are mutable unless passed using const.
