@@ -236,6 +236,24 @@ In C#, we cannot directly assign to the value we iterate in a foreach loop, howe
     }
 ```
 
+#### C++
+In C++, range based for loops are mutable unless passed using const.
+```
+	std::vector<int> vec = { 1, 2, 3, 4, 5 };
+
+	// Passes by value, vec is not modified
+	for (int i : vec)
+	{
+		i++;
+	}	
+
+	// Passes by ref, vec is modified
+	for (int & i : vec)
+	{
+		i++;
+	}
+```
+
 ### Memory and Smart Pointers
 Most of this section comes from [Fluent C++](https://www.fluentcpp.com/2017/08/22/smart-developers-use-smart-pointers-smart-pointers-basics/).
 #### Stack vs Heap
@@ -254,23 +272,6 @@ This function returns a House pointer. As the user of this function perhaps I sh
 
 RAII comes to the rescue. One simple rule: Wrap a resource (a pointer) into an object, and dispose of the resource in its destructor. This way the wrapper object is allocated in stack, and is automatically destroyed (delete ptr is called with the destructor) when it goes out of scope.
 
-#### C++
-In C++, range based for loops are mutable unless passed using const.
-```
-	std::vector<int> vec = { 1, 2, 3, 4, 5 };
-
-	// Passes by value, vec is not modified
-	for (int i : vec)
-	{
-		i++;
-	}	
-
-	// Passes by ref, vec is modified
-	for (int & i : vec)
-	{
-		i++;
-	}
-```
 
 ## Unreal
 ### Replication Tips
