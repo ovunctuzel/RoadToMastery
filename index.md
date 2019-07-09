@@ -21,6 +21,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 ### Unreal
 * [Replication Tips](#replication-tips)
 * [Delegates](#delegates)
+* [Reflection](#reflection)
 
 ### Coming Soon
 * Memset and friends
@@ -315,3 +316,18 @@ In C++ we can bind to a delegate like this:
 OnChoiceReceived.AddDynamic(this, &USomeClass::RespondToChoice);
 ```
 Use ``` AddUObject ``` for non-dynamic delegates, and use ``` BindUObject ``` for non-multicast delegates.
+
+### Reflection
+Details coming soon...
+
+Reflection is the ability of a program to examine itself at runtime. This is hugely useful and is a foundational technology of the Unreal engine, powering many systems such as detail panels in the editor, serialization, garbage collection, network replication, and Blueprint/C++ communication. However, C++ doesn’t natively support any form of reflection, so Unreal has its own system to harvest, query, and manipulate information about C++ classes, structs, functions, member variables, and enumerations.
+
+https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection?sessionInvalidated=true
+```
+for (TFieldIterator<UProperty> PropIt(GetClass()); PropIt; ++PropIt)
+{
+	UProperty* Property = *PropIt;
+	// Do something with the property
+}
+```
+
