@@ -323,11 +323,28 @@ Details coming soon...
 Reflection is the ability of a program to examine itself at runtime. This is hugely useful and is a foundational technology of the Unreal engine, powering many systems such as detail panels in the editor, serialization, garbage collection, network replication, and Blueprint/C++ communication. However, C++ doesn’t natively support any form of reflection, so Unreal has its own system to harvest, query, and manipulate information about C++ classes, structs, functions, member variables, and enumerations.
 
 https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection?sessionInvalidated=true
+
+Two ways of getting a property on a class:
 ```
-for (TFieldIterator<UProperty> PropIt(GetClass()); PropIt; ++PropIt)
+UMulticastDelegateProperty* delProp = FindField<UMulticastDelegateProperty>(convo->GetClass(), FName("TestDelegate"));
+if (delProp != NULL)
 {
-	UProperty* Property = *PropIt;
-	// Do something with the property
+	FMulticastScriptDelegate del = delProp->GetPropertyValue_InContainer(convo);
+	del.ProcessMulticastDelegate<AVoidConversation>(nullptr);
 }
 ```
+```
+for (TFieldIterator<UProperty> PropIt(convo->GetClass()); PropIt; ++PropIt)
+{
+	UProperty* Property = *PropIt;
+
+	if (Property->GetName().Equals("TestDelegate"))
+	{
+		UMulticastDelegateProperty* deleg = Cast<UMulticastDelegateProperty>(Property);
+		FMulticastScriptDelegate* a = deleg->ContainerPtrToValuePtr<FMulticastScriptDelegate>(convo);
+		a->ProcessMulticastDelegate<AVoidConversation>(nullptr);
+	}
+}
+```
+Both approaches do the same thing. If we know the type of the property, we can cast it to a subclass such as UFloatProperty, or UDelegate property. Then we can get its value using ContainerPtrToValuePtr (returns pointer), or GetPropertyValue_InContainer (returns value). In the above example, the delegates are invoked using ProcessMulticastDelegate. Normally Broadcast is used instead of ProcessMulticastDelegate, but since blueprints automatically generate delegate types, the base class had to be used. 
 
