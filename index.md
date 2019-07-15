@@ -15,6 +15,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Regex](#regex)
 * [Raw Strings](#raw-strings)
 * [Foreach Mutability](#foreach-mutability)
+* [Forward Declarations](#forward-declarations)
 * [Interesting Data Structures](#interesting-data-structures)
 * [Memory & Smart Pointers](#memory-and-smart-pointers)
 
@@ -254,6 +255,32 @@ In C++, range based for loops are mutable unless passed using const.
 		i++;
 	}
 ```
+
+### Forward Declarations
+```
+class ClassA;
+
+class ClassB
+{
+public:
+	ClassA* Class1Ptr;
+};
+
+```
+In the above example we forward declare ClassA, so the compiler doesn't freak out when it sees the ClassA* variable Class1Ptr. We could achieve the same effect by doing an include "ClassA.h", but then ClassA has to be compiled, and can significantly increase build time. Forward declarations will only work if we have pointers to a class, so the below code won't compile:
+
+```
+class ClassA;
+
+class ClassB
+{
+public:
+	ClassA Class1Obj;
+};
+
+```
+An additional benefit of forward declaration is being able to have classes that reference each other (no cyclic includes). No apparent downsides.
+
 
 ### Memory and Smart Pointers
 Most of this section comes from [Fluent C++](https://www.fluentcpp.com/2017/08/22/smart-developers-use-smart-pointers-smart-pointers-basics/).
