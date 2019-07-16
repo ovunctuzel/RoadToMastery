@@ -1,3 +1,5 @@
+Continue on to [TEST](test.md).
+
 ## C++ Study Journal
 
 This page contains a list of quick tips and tutorials for programming and game development. This page mostly focuses on C++, but resources on C#, Python, Unreal Engine, Unity, and Math can also be found.
