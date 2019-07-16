@@ -1,2 +1,9 @@
-[Programming](index.md)    [Unreal](unreal.md)    [Misc](misc.md)    [Coming Soon](soon.md)
 
+<p align="center">
+  <a href="">Programming</a> |
+  <a href="unreal.html">Unreal</a> |
+  <a href="misc.html">Misc</a> |
+  <a href="soon.html">Coming Soon</a>
+</p>
+
+* * *
