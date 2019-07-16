@@ -1,10 +1,9 @@
 
-[index](index.md)
 <p align="center">
-  <a href="index.md">Programming</a> |
-  <a href="unreal.md">Unreal</a> |
-  <a href="misc.md">Misc</a> |
-  <a href="soon.md">Coming Soon</a>
+  <a href="">Programming</a> |
+  <a href="unreal.html">Unreal</a> |
+  <a href="misc.html">Misc</a> |
+  <a href="soon.html">Coming Soon</a>
 </p>
 
 * * *
