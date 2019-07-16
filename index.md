@@ -1,15 +1,12 @@
-[Programming](index.md)    [Unreal](unreal.md)    [Misc](misc.md)    [Coming Soon](soon.md)
-* * *
 
 <p align="center">
-  <b>Some Links:</b><br>
   <a href="index.md">Programming</a> |
   <a href="unreal.md">Unreal</a> |
   <a href="misc.md">Misc</a> |
   <a href="soon.md">Coming Soon</a>
-  <br><br>
 </p>
 
+* * *
 
 ## C++ Study Journal
 
