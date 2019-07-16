@@ -1,6 +1,16 @@
 [Programming](index.md)    [Unreal](unreal.md)    [Misc](misc.md)    [Coming Soon](soon.md)
 * * *
 
+<p align="center">
+  <b>Some Links:</b><br>
+  <a href="index.md">Programming</a> |
+  <a href="unreal.md">Unreal</a> |
+  <a href="misc.md">Misc</a> |
+  <a href="soon.md">Coming Soon</a>
+  <br><br>
+</p>
+
+
 ## C++ Study Journal
 
 This page contains a list of quick tips and tutorials for programming and game development. This page mostly focuses on C++, but resources on C#, Python, Unreal Engine, Unity, and Math can also be found.
