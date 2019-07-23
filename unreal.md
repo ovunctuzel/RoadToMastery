@@ -11,7 +11,8 @@
 * [Replication Tips](#replication-tips)
 * [Delegates](#delegates)
 * [Reflection](#reflection)
-* [Avoid Optimizations](#avoid-optimizations)
+* [Avoiding Optimizations](#avoiding-optimizations)
+
 * * *
 
 ## Unreal
@@ -88,7 +89,7 @@ for (TFieldIterator<UProperty> PropIt(convo->GetClass()); PropIt; ++PropIt)
 ```
 Both approaches do the same thing. If we know the type of the property, we can cast it to a subclass such as UFloatProperty, or UDelegate property. Then we can get its value using ContainerPtrToValuePtr (returns pointer), or GetPropertyValue_InContainer (returns value). In the above example, the delegates are invoked using ProcessMulticastDelegate. Normally Broadcast is used instead of ProcessMulticastDelegate, but since blueprints automatically generate delegate types, the base class had to be used. 
 
-### Avoid Optimizations
+### Avoiding Optimizations
 C++ style: Wrap a function between these keywords to avoid optimizations for a block of code:
 
 ```
