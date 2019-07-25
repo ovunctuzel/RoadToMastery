@@ -28,6 +28,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Forward Declarations](#forward-declarations)
 * [Interesting Data Structures](#interesting-data-structures)
 * [Memory & Smart Pointers](#memory-and-smart-pointers)
+* [Explicit Template Instantiation](#explicit-template-instantiation)
 
 ### Coming Soon
 * Memset and friends
@@ -286,6 +287,34 @@ public:
 ```
 An additional benefit of forward declaration is being able to have classes that reference each other (no cyclic includes). No apparent downsides.
 
+### Explicit template instantiation
+Templated member functions must be defined in the header file, otherwise linker errors will occur. The reason is that templated functions are not compiled. If it is really necessary to define a templated function in a cpp file we need to explicitly instantiate them in the cpp file.
+
+Header:
+```
+class BooleanExpressionParser
+{
+public:
+	BooleanExpressionParser();
+
+	template <typename T>
+	void test(T t);
+};
+
+```
+Source:
+```
+template <typename T>
+void BooleanExpressionParser::test(T t)
+{
+	// Do stuff
+	return;
+}
+
+// End of source file
+template void BooleanExpressionParser::test(int);
+```
+Here we explicitly tell the compiler to create a version of this templated function using int as the type T.
 
 ### Memory and Smart Pointers
 Most of this section comes from [Fluent C++](https://www.fluentcpp.com/2017/08/22/smart-developers-use-smart-pointers-smart-pointers-basics/).
