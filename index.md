@@ -17,6 +17,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 ### Programming
 
 * [Endl is evil](#endl-is-evil-but-only-a-little-bit)
+* [Accessing parent class members](#accessing-parent-class-members)
 * [Data Alignment](#data-alignment)
 * [Method Chaining](#method-chaining)
 * [Using](#using)
@@ -42,6 +43,28 @@ This page contains a list of quick tips and tutorials for programming and game d
 
 ### Endl is evil, but only a little bit
 Std::endl is equivalent to ‘\n’ followed by a std::flush. Flushing is emptying the stream buffer, and it is not always desired. Not using std::endl everywhere can slightly improve performance.
+
+### Accessing Parent Class Members
+If class B inherits from class A, B can call a function defined on A, or use a member inherited from A in the following way:
+```
+B::printStuffFromA()
+{ 	
+	A::print();
+	print(); // print() has different implementations in A and B
+	std::cout << x << A::x; // X is defined in both A and B
+}
+```
+
+Use the base keyword in C#:
+```
+printStuffFromA()
+{
+	base.print();
+	print();
+	Console.WriteLine(base.x);
+	Console.WriteLine(x);
+}
+```
 
 ### Data Alignment
 In a C++ struct, data is padded with zeros to fit things in words. A struct with a char, an int, and a short takes up more space than a struct with an int, a short and a char. A good practice is to order members from large to small. However, unless working with severe hardware constraints or trying to optimize networked software, this only becomes relevant for millions of structs. More info: https://jonasdevlieghere.com/order-your-members/
