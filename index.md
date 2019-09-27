@@ -361,14 +361,14 @@ RAII comes to the rescue. One simple rule: Wrap a resource (a pointer) into an o
 Quick recap on static vs. dynamic libraries (dll vs lib) from Stack Overflow by Charles E. Grant:
 
 > There are static libraries (LIB) and dynamic libraries (DLL).
-
+>
 > Libraries are used because you may have code that you want to use in many programs. For example if you write a function that counts the number of characters in a string, that function will be useful in lots of programs. Once you get that function working correctly you don't want to have to recompile the code every time you use it, so you put the executable code for that function in a library, and the linker can extract and insert the compiled code into your program. Static libraries are sometimes called 'archives' for this reason.
-
+>
 > Dynamic libraries take this one step further. It seems wasteful to have multiple copies of the library functions taking up space in each of the programs. Why can't they all share one copy of the function? This is what dynamic libraries are for. Rather than building the library code into your program when it is compiled, it can be run by mapping it into your program as it is loaded into memory. Multiple programs running at the same time that use the same functions can all share one copy, saving memory. In fact, you can load dynamic libraries only as needed, depending on the path through your code. No point in having the printer routines taking up memory if you aren't doing any printing. On the other hand, this means you have to have a copy of the dynamic library installed on every machine your program runs on. This creates its own set of problems.
-
+>
 > As an example, almost every program written in 'C' will need functions from a library called the 'C runtime library, though few programs will need all of the functions. The C runtime comes in both static and dynamic versions, so you can determine which version your program uses depending on particular needs.
 
-In Visual Studio, the C++ runtime library can be changed from dynamic to static from the project properties > C/C++ > Code Generation > Runtime Library > Multi-Threaded instead of Multi-Threaded DLL. This way the executable won't need any runtime dlls.
+In Visual Studio, the C++ runtime library can be changed from dynamic to static from the project properties > C/C++ > Code Generation > Runtime Library > Multi-Threaded instead of Multi-Threaded DLL. This way the executable won't need any runtime dlls, but the exe would be larger. Make sure to do the same thing to other libraries/projects the exe project includes.
 
 
 
