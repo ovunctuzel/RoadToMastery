@@ -31,6 +31,7 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Memory & Smart Pointers](#memory-and-smart-pointers)
 * [Explicit Template Instantiation](#explicit-template-instantiation)
 * [Static Object Lifetime](#static-object-lifetime)
+* [Calling C/C++ stuff from Python](#calling-c-from-python)
 
 ### Coming Soon
 * Memset and friends
@@ -374,3 +375,5 @@ In Visual Studio, the C++ runtime library can be changed from dynamic to static 
 ### Static Object Lifetime
 Static objects are destroyed when the main function goes out of scope. This is important to know when cleaning up stuff. Example: VRPN Connection Manager is implemented as a static object in the VRPN library. When the application is closed, its destructor runs, and kills all the vrpn connections. If we attempt to do stuff with the connections after the mainloop has terminated (e.g. using std::atexit to do stuff if the application is force killed), those connections would be destroyed by the manager already. In our case the manager destroyed them, but did not null the pointers, causing crashes.
 
+### Calling C from Python
+Gnarly Stuff: https://docs.python.org/2/extending/extending.html
