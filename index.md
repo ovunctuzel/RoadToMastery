@@ -32,6 +32,8 @@ This page contains a list of quick tips and tutorials for programming and game d
 * [Explicit Template Instantiation](#explicit-template-instantiation)
 * [Static Object Lifetime](#static-object-lifetime)
 * [Calling C/C++ stuff from Python](#calling-c-from-python)
+* [Simple Multithreading Example](#simple-multithreading-example)
+
 
 ### Coming Soon
 * Memset and friends
@@ -377,3 +379,30 @@ Static objects are destroyed when the main function goes out of scope. This is i
 
 ### Calling C from Python
 Gnarly Stuff: https://docs.python.org/2/extending/extending.html
+
+### Simple Multithreading Example
+```
+#include <string>
+#include <iostream>
+#include <thread>
+
+using namespace std;
+
+// The function we want to execute on the new thread.
+void task1(string msg)
+{
+    cout << "task1 says: " << msg;
+}
+
+int main()
+{
+    // Constructs the new thread and runs it. Does not block execution.
+    thread t1(task1, "Hello");
+
+    // Do other things...
+
+    // Makes the main thread wait for the new thread to finish execution, therefore blocks its own execution.
+    t1.join();
+}
+```
+
