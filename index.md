@@ -361,6 +361,16 @@ This function returns a House pointer. As the user of this function perhaps I sh
 
 RAII comes to the rescue. One simple rule: Wrap a resource (a pointer) into an object, and dispose of the resource in its destructor. This way the wrapper object is allocated in stack, and is automatically destroyed (delete ptr is called with the destructor) when it goes out of scope.
 
+#### Shared vs Unique vs Raw Pointer
+From: https://stackoverflow.com/questions/49024982/what-is-ownership-of-resources-or-pointers
+```
+Compare int *, std::unique_ptr<int>, and std::shared_ptr<int>. All these types are "a pointer to an int". But the first one does not represent ownership — you can do anything you want with it, and you can happily use it in ways which lead to memory leaks or double-frees.
+
+std::unique_ptr<int> represents the simplest form of ownership: it says "I am the sole owner of the resource (= the dynamically allocated int). When I get destroyed, I clean it up correctly." It is designed not to offer a sane way of violating the ownership semantics (e.g. it's noncopyable).
+
+std::shared_ptr<int> represents a more complex form of ownership: "I am one of a group of friends who are collectively responsible for the resource. The last of us to get destroyed will clean it up." Again, there are a few hoops to jump through before you can violate the semantics.
+```
+
 ### Statically Linking Runtime Libraries
 Quick recap on static vs. dynamic libraries (dll vs lib) from Stack Overflow by Charles E. Grant:
 
